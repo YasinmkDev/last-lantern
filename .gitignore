@@ -1,0 +1,8 @@
+# Godot 4: generated import cache (regenerated on open)
+.godot/
+
+# Build outputs (web + Android exports are rebuilt from the presets)
+Builds/
+*.pck
+*.apk
+*.aab
