@@ -35,6 +35,7 @@ func _process(_delta: float) -> bool:
 				Input.action_release("move_right")
 				_check("move_right increases x", player.global_position.x > start_x + 100)
 				_check("facing right", player.facing == 1)
+				_check("walk animation while moving", str(player.get_node("Visual").animation) == "walk")
 				Input.action_press("move_left")
 				phase = 2
 		2: # move left 60 frames
@@ -43,20 +44,26 @@ func _process(_delta: float) -> bool:
 				_check("move_left decreases x", player.global_position.x < start_x + 100)
 				_check("facing left", player.facing == -1)
 				phase = 3
-		3: # wait for landing, then jump
+		3: # wait for landing, then stand still a few frames
 			if player.is_on_floor():
-				Input.action_press("jump")
-				phase = 4
+				phase = 30
+				frame = 0
 			elif frame > 400:
 				_check("player on floor before jump", false)
 				_finish()
 				return true
+		30: # idle check after the animation has had ticks to switch
+			if frame > 5:
+				_check("idle animation when still", str(player.get_node("Visual").animation) == "idle")
+				Input.action_press("jump")
+				phase = 4
 		4:
 			Input.action_release("jump")
 			phase = 5
 		5: # airborne check after 15 frames
 			if frame > 0 and player.global_position.y < 595:
 				_check("jump leaves ground", true)
+				_check("jump animation in air", str(player.get_node("Visual").animation) == "jump")
 				phase = 6
 			elif frame > 300:
 				_check("jump leaves ground", false)
@@ -75,7 +82,8 @@ func _process(_delta: float) -> bool:
 				_check("crouch flag", player.crouching)
 				_check("stand shape disabled while crouched", player.get_node("StandShape").disabled)
 				_check("crouch shape enabled while crouched", not player.get_node("CrouchShape").disabled)
-				_check("visual squashed", abs(player.get_node("Visual").scale.y - 0.5625) < 0.01)
+				# squash 0.5625 x base visual scale 0.3
+				_check("visual squashed", abs(player.get_node("Visual").scale.y - 0.16875) < 0.01)
 				Input.action_release("crouch")
 				phase = 8
 				frame = 0

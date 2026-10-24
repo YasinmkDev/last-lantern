@@ -36,6 +36,8 @@ Open the project in Godot 4.3 and run `scenes/main.tscn`.
 
 ## Status
 
-In development. The character and monsters are placeholder rectangles —
-real sprites drop into the slots documented in
+In development. The hero is the detective (fedora, gas mask, trench
+coat) from `assets/character/` — idle + 8-frame walk cycle, stride pose
+for jumps, squash for crouch. Monsters are still placeholder rectangles
+— real sprites drop into the slots documented in
 `assets/README_ASSETS.md`.

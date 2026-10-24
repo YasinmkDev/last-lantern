@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://lastlanternplayer"]
+[gd_scene load_steps=5 format=3 uid="uid://lastlanternplayer"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://assets/character/detective_spriteframes.tres" id="2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(40, 64)
@@ -20,19 +21,8 @@ position = Vector2(0, -18)
 disabled = true
 shape = SubResource("RectangleShape2D_crouch")
 
-[node name="Visual" type="Node2D" parent="."]
-
-[node name="Body" type="ColorRect" parent="Visual"]
-position = Vector2(-20, -64)
-size = Vector2(40, 64)
-color = Color(0.2, 0.55, 0.9, 1)
-
-[node name="EyeLeft" type="ColorRect" parent="Visual"]
-position = Vector2(-12, -52)
-size = Vector2(6, 8)
-color = Color(1, 1, 1, 1)
-
-[node name="EyeRight" type="ColorRect" parent="Visual"]
-position = Vector2(4, -52)
-size = Vector2(6, 8)
-color = Color(1, 1, 1, 1)
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2")
+animation = &"idle"

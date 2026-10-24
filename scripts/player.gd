@@ -1,6 +1,7 @@
 extends CharacterBody2D
-## Placeholder hero. Swap the Visual ColorRects for real character sprites later
-## (see assets/README_ASSETS.md). Origin = feet.
+## Detective hero (assets/character/detective_*.png). Origin = feet.
+## The art faces the camera, so left/right movement does not turn the
+## sprite sideways; scale.x flipping mirrors only tiny asymmetries.
 ## Controls: move_left/move_right (A/D, arrows), jump (Space),
 ## crouch (S, Down), shoot (X). Touch controls will drive the same actions.
 
@@ -10,6 +11,7 @@ const JUMP_VELOCITY = -520.0
 const COYOTE_TIME = 0.1
 const JUMP_BUFFER = 0.1
 const SHOOT_COOLDOWN = 0.25
+const VISUAL_SCALE = 0.3
 
 var coyote_timer = 0.0
 var jump_buffer_timer = 0.0
@@ -21,6 +23,8 @@ var crouching = false
 func _ready():
 	add_to_group("player")
 	spawn_position = global_position
+	$Visual.scale = Vector2(VISUAL_SCALE, VISUAL_SCALE)
+	$Visual.play("idle")
 
 func _physics_process(delta):
 	# --- Crouch: only on the floor; stand up only when headroom is clear.
@@ -34,7 +38,7 @@ func _physics_process(delta):
 	velocity.x = direction * (CROUCH_SPEED if crouching else SPEED)
 	if direction != 0:
 		facing = sign(direction)
-		$Visual.scale.x = facing
+		$Visual.scale.x = facing * VISUAL_SCALE
 
 	# --- Gravity + coyote time.
 	if is_on_floor():
@@ -70,6 +74,11 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	# --- Animation: walk when moving, idle when still, stride pose in air.
+	var anim = "jump" if not is_on_floor() else ("walk" if direction != 0 else "idle")
+	if $Visual.animation != anim:
+		$Visual.play(anim)
+
 func _set_crouch(state: bool):
 	if crouching == state:
 		return
@@ -77,7 +86,7 @@ func _set_crouch(state: bool):
 	$StandShape.disabled = state
 	$CrouchShape.disabled = not state
 	# Visual squashes around the feet (Visual origin = player origin = feet).
-	$Visual.scale.y = 0.5625 if state else 1.0
+	$Visual.scale.y = (0.5625 if state else 1.0) * VISUAL_SCALE
 
 func die():
 	# Placeholder death: respawn at spawn point. Replace with real
