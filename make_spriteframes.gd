@@ -12,7 +12,7 @@ func _initialize() -> void:
 	frames.add_frame("idle", load("res://assets/character/detective_idle.png"))
 	frames.add_animation("walk")
 	frames.set_animation_loop("walk", true)
-	frames.set_animation_speed("walk", 10.0)
+	frames.set_animation_speed("walk", 8.0)
 	for i in range(1, 9):
 		frames.add_frame("walk", load("res://assets/character/detective_walk%d.png" % i))
 	frames.add_animation("jump")

@@ -1,14 +1,14 @@
 [gd_resource type="SpriteFrames" load_steps=10 format=3]
 
-[ext_resource type="Texture2D" path="res://assets/character/detective_idle.png" id="1_kakws"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk4.png" id="2_ns6ht"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk1.png" id="3_1rosx"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk2.png" id="4_ccq2w"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk3.png" id="5_hafku"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk5.png" id="6_1feo4"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk6.png" id="7_0swba"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk7.png" id="8_eml05"]
-[ext_resource type="Texture2D" path="res://assets/character/detective_walk8.png" id="9_a5ehy"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_idle.png" id="1_q5e7a"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk4.png" id="2_4d7g2"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk1.png" id="3_hw8k2"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk2.png" id="4_owgfo"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk3.png" id="5_h7w0f"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk5.png" id="6_kmmqb"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk6.png" id="7_exert"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk7.png" id="8_r5i67"]
+[ext_resource type="Texture2D" path="res://assets/character/detective_walk8.png" id="9_l5y8e"]
 
 [resource]
 animations = [{
@@ -19,7 +19,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kakws")
+"texture": ExtResource("1_q5e7a")
 }],
 "loop": true,
 "name": &"idle",
@@ -27,7 +27,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ns6ht")
+"texture": ExtResource("2_4d7g2")
 }],
 "loop": true,
 "name": &"jump",
@@ -35,30 +35,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_1rosx")
+"texture": ExtResource("3_hw8k2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ccq2w")
+"texture": ExtResource("4_owgfo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_hafku")
+"texture": ExtResource("5_h7w0f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ns6ht")
+"texture": ExtResource("2_4d7g2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_1feo4")
+"texture": ExtResource("6_kmmqb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_0swba")
+"texture": ExtResource("7_exert")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_eml05")
+"texture": ExtResource("8_r5i67")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_a5ehy")
+"texture": ExtResource("9_l5y8e")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 10.0
+"speed": 8.0
 }]

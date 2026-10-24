@@ -5,13 +5,13 @@ extends CharacterBody2D
 ## Controls: move_left/move_right (A/D, arrows), jump (Space),
 ## crouch (S, Down), shoot (X). Touch controls will drive the same actions.
 
-const SPEED = 300.0
-const CROUCH_SPEED = 140.0
+const SPEED = 200.0
+const CROUCH_SPEED = 90.0
 const JUMP_VELOCITY = -520.0
 const COYOTE_TIME = 0.1
 const JUMP_BUFFER = 0.1
 const SHOOT_COOLDOWN = 0.25
-const VISUAL_SCALE = 0.3
+const VISUAL_SCALE = 0.4
 
 var coyote_timer = 0.0
 var jump_buffer_timer = 0.0

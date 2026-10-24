@@ -22,7 +22,7 @@ disabled = true
 shape = SubResource("RectangleShape2D_crouch")
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -36)
-scale = Vector2(0.3, 0.3)
+position = Vector2(0, -48)
+scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("2")
 animation = &"idle"

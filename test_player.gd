@@ -9,6 +9,7 @@ var player: Node
 var frame := 0
 var phase := 0
 var start_x := 0.0
+var peak_x := 0.0
 var results := []
 
 func _initialize() -> void:
@@ -33,7 +34,9 @@ func _process(_delta: float) -> bool:
 		1: # move right 60 frames
 			if frame > 70:
 				Input.action_release("move_right")
-				_check("move_right increases x", player.global_position.x > start_x + 100)
+				_check("move_right speed", abs(player.velocity.x - 200.0) < 1.0)
+				_check("move_right increases x", player.global_position.x > start_x + 30)
+				peak_x = player.global_position.x
 				_check("facing right", player.facing == 1)
 				_check("walk animation while moving", str(player.get_node("Visual").animation) == "walk")
 				Input.action_press("move_left")
@@ -41,7 +44,8 @@ func _process(_delta: float) -> bool:
 		2: # move left 60 frames
 			if frame > 130:
 				Input.action_release("move_left")
-				_check("move_left decreases x", player.global_position.x < start_x + 100)
+				_check("move_left speed", abs(player.velocity.x + 200.0) < 1.0)
+				_check("move_left decreases x", player.global_position.x < peak_x)
 				_check("facing left", player.facing == -1)
 				phase = 3
 		3: # wait for landing, then stand still a few frames
@@ -82,8 +86,8 @@ func _process(_delta: float) -> bool:
 				_check("crouch flag", player.crouching)
 				_check("stand shape disabled while crouched", player.get_node("StandShape").disabled)
 				_check("crouch shape enabled while crouched", not player.get_node("CrouchShape").disabled)
-				# squash 0.5625 x base visual scale 0.3
-				_check("visual squashed", abs(player.get_node("Visual").scale.y - 0.16875) < 0.01)
+				# squash 0.5625 x base visual scale 0.4
+				_check("visual squashed", abs(player.get_node("Visual").scale.y - 0.225) < 0.01)
 				Input.action_release("crouch")
 				phase = 8
 				frame = 0
